@@ -17,73 +17,52 @@ var destination = "";
 var frequency = 0; //mins
 var nextArrival = ""; //military time
 var minsAway = 0;
+var firstTrain = "";
 var trainName = "";
-var firsttrain = "";
-var i = 7;
 // Capture Button Click
 $("#add-user").on("click", function() {
  // Don't refresh the page!
   event.preventDefault();
-  i++
-  // Code in the logic for storing and retrieving the most recent train.
 
-  //changed this to use the proper form values
+  // Code in the logic for storing and retrieving the most recent train.
   destination = $("#dest-input").val().trim();
-  frequency = $("#frequency-input").val().trim();
-  firsttrain = $("#first-train-input").val().trim();
+  frequency = $("#freq-input").val().trim();
+  nextArrival = $("#nextArr-input").val().trim();
+  minsAway = $("#minsAway-input").val().trim();
   trainName = $("#trainName-input").val().trim();
-  console.log("first train retrieved " + firsttrain);
-  //convert time to a time that simply a unix number in seconds
-  //firsttrain = moment(firsttrain, "HH:mm").format("X");
-  console.log("first train before passed " + firsttrain);
-//add the logic to calculate the nextArrival & minutesAway
-getTimes(frequency, firsttrain);
-//nextArrival = nextTrain;
-console.log(nextArrival);
+  //call getTime function in order to get minutesAway and Next arrival
+  getTimes(frequency,)
   //database.ref().set({
-  //database.ref("Schedule").push({
-  database.ref("Schedule").child("Train" + i).update({
+  //add train to firebase
+  database.ref("Schedule").child("Train5").update({
     destination: destination,
     frequency: frequency,
-    //firsttrain: firsttrain,
+    nextArrival: nextArrival,
     minutesAway: minsAway,
-    nextArrival: nextArrival, 
-    trainName: trainName
+    trainName: trainName 
+  //add train to schedule on screen
+
   });
 });
 
 //Handle the initial load or data alread in your firebase database
 database.ref("Schedule").on("child_added", function(snapshot) {
         console.log(snapshot.val());
-        //console.log(snapshot.val().destination);
-        //console.log(snapshot.val().frequency);
+        console.log(snapshot.val().destination);
+        console.log(snapshot.val().frequency);
         //console.log(snapshot.val().age);
         //console.log(snapshot.val().comment);
-        var testMoment = moment(snapshot.val().firsttrain, "X").format("HH:mm");
-        //making sure moment is getting the time correct
-        console.log(testMoment);
-      //************calculating the train next arrival******************
-
-//nextArrival = "fakevalue";
-//minsAway = "0 (not yet calculated)";
-      //***********end calculation ***********
+      
 // Change the HTML to reflect
-      //creating the rows
-      //$("#destination").append(snapshot.val().destination);
-      //$("#frequency").append(snapshot.val().frequency);
-      //$("#next-arrival").append(snapshot.val().nextArrival);
-      //$("#minutes-away").append(snapshot.val().minutesAway);  
-      //$("#train-name").append(snapshot.val().trainName);     
-      var rowHtml = $("<div>");
-      rowHtml.addClass("row");
-      rowHtml.append($("<div>").addClass("col-xs-2").html(snapshot.val().trainName));
-      rowHtml.append($("<div>").addClass("col-xs-2").html(snapshot.val().destination));
-      rowHtml.append($("<div>").addClass("col-xs-2").html(snapshot.val().frequency));
-      rowHtml.append($("<div>").addClass("col-xs-2").html(snapshot.val().nextArrival));
-      rowHtml.append($("<div>").addClass("col-xs-2").html(snapshot.val().minutesAway));
+      var newDiv = $("<div>");
+      $("#destination").append(newDiv.html(snapshot.val().destination));
+      $("#frequency").append(newDiv.html(snapshot.val().frequency));
+      $("#next-arrival").append(newDiv.html(snapshot.val().nextArrival));
+      $("#minutes-away").append(newDiv.html(snapshot.val().minutesAway));  
+      //$("#train-name").append(snapshot.val().trainName); 
+      $("#train-name").append(newDiv.html(snapshot.val().trainName));    
+      
 
-      $("#all-trains").append(rowHtml);
-      console.log($("#all-trains").html());
     // Create Error Handling
     }, function(errorObject) {
   console.log("The read failed: " + errorObject.code);
@@ -91,22 +70,16 @@ database.ref("Schedule").on("child_added", function(snapshot) {
 });
 
 function getTimes(freq, first_time) {
-      console.log("I'm in the getTimes function");
-
       // Assumptions
     //var tFrequency = 1440; // frequency
     var tFrequency = freq;
-    console.log("frequency is " + tFrequency);
-    console.log("I was passed " + freq);
     // Time is 3:30 AM
     //var firstTime = "00:00"; //train starts
     var firstTime = first_time;
-    console.log("first train is " + firstTime);
-    console.log("I was passed " + first_time);
 
     // First Time (pushed back 1 year to make sure it comes before current time)
     var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
-    console.log("first time converted is "  + firstTimeConverted);
+    console.log(firstTimeConverted);
 
     // Current Time
     var currentTime = moment();
@@ -127,10 +100,6 @@ function getTimes(freq, first_time) {
     // Next Train
     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
     console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-    
-    //setting these global variable bc return isn't working liked I hoped
-    nextArrival = nextTrain;
-    minutesAway = tMinutesTillTrain;
     return nextTrain, tMinutesTillTrain;
   }
 /*function pushIntoFirebase(newName, dest, freq, min, nextArr, trainNm) {
