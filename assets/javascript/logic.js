@@ -126,10 +126,13 @@ function getTimes(freq, first_time) {
 
     // Next Train
     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log(nextTrain);
     console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
     
     //setting these global variable bc return isn't working liked I hoped
-    nextArrival = nextTrain;
-    minutesAway = tMinutesTillTrain;
+    nextArrival = moment(nextTrain).format("hh:mm");
+    
+    minsAway = tMinutesTillTrain;
+    console.log(minsAway);
     return nextTrain, tMinutesTillTrain;
   }
