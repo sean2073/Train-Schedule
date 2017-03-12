@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Midnight Train to Georgia</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <br>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="text-center">Love The Train</h1>
+    </div>
+    <!-- this is the train schedule section -->
+    <div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Train Schedule</h3>
+  </div>
+  <div class="panel-body">
+    
+    <div class="row">
+      <div class="col-md-2">
+        <h4>Train Name</h4>
+      </div>
+      <div class="col-md-2">
+        <h4>Destination</h4>
+      </div>
+      <div class="col-md-2">
+        <h4>Frequency (min)</h4>
+      </div>
+      <div class="col-md-2">
+        <h4>Next Arrival</h4>
+      </div>
+      <div class="col-md-2">
+        <h4>Minutes Away</h4>
+      </div>
+    </div> <!-- closes the row -->
+    <div class="row">
+      <div class="col-md-2">
+        <div id="train-name"></div>
+      </div>
+      <div class="col-md-2">
+        <div id="destination"></div>
+      </div>
+      <div class="col-md-2">
+        <div id="frequency"></div>
+      </div>
+      <div class="col-md-2">
+        <div id="next-arrival"></div>
+      </div>
+      <div class="col-md-2">
+        <div id="minutes-away"></div>
+      </div>
+    </div> <!-- closes the row -->
+  </div> <!-- closes panel-body -->
+</div>
+    <!-- this is the add a train section -->
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Add Train</h3>
+    </div>
+  <div class="panel-body">
+    
+    <div class="form-group has-success">
+      <label class="control-label" for="inputSuccess">Train Name</label>
+      <input type="text" class="form-control" id="trainName-input">
+    </div>
+    <div class="form-group has-success">
+      <label class="control-label" for="inputSuccess">Destination</label>
+      <input type="text" class="form-control" id="dest-input">
+    </div>
+    <div class="form-group has-success">
+      <label class="control-label" for="inputSuccess">Frequency</label>
+      <input type="text" class="form-control" id="freq-input">
+    </div>
+    <div class="form-group has-success">
+      <label class="control-label" for="inputSuccess">Next Arrival</label>
+      <input type="text" class="form-control" id="nextArr-input">
+    </div>
+    <div class="form-group has-success">
+      <label class="control-label" for="inputSuccess">Minutes Away</label>
+      <input type="text" class="form-control" id="minsAway-input">
+    </div>
+    <div class="form-group">
+      
+        <button type="submit" class="btn btn-primary" for="inputSuccess" id="add-user">Submit</button>
+      
+    </div>
+  </div>
+</div>
+ 
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+  <!-- LINK TO FIREBASE GOES HERE -->
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+  <!-- Script -->
+  <script src="assets/javascript/logic.js">
+    
+
+
+    
+  </script>
+
+</body>
+
+</html>

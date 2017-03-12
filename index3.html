@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Midnight Train to Georgia</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Added Moment JS -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <br>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="text-center">Love The Train</h1>
+    </div>
+    <!-- this is the train schedule section -->
+    <div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Train Schedule</h3>
+  </div>
+  <div class="panel-body">
+    
+    <div class="row">
+      <div class="col-xs-2">
+        <h4>Train Name</h4>
+      </div>
+      <div class="col-xs-2">
+        <h4>Destination</h4>
+      </div>
+      <div class="col-xs-2">
+        <h4>Frequency (min)</h4>
+      </div>
+      <div class="col-xs-2">
+        <h4>Next Arrival</h4>
+      </div>
+      <div class="col-xs-2">
+        <h4>Minutes Away</h4>
+      </div>
+    </div> <!-- closes the row -->
+    <div class="row">
+      <div id="all-trains" class="col-xs-12">
+      </div>
+    </div> <!-- closes the row -->
+  </div> <!-- closes panel-body -->
+</div>
+    <!-- this is the add a train section -->
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Add Train</h3>
+    </div>
+  <div class="panel-body">
+    
+    <div class="form-group has-success">
+      <label class="control-label" for="trainName-input">Train Name</label>
+      <input type="text" class="form-control" id="trainName-input">
+    </div>
+    <div class="form-group has-success">
+      <label class="control-label" for="dest-input">Destination</label>
+      <input type="text" class="form-control" id="dest-input">
+    </div>
+    <div class="form-group has-success">
+      <label class="control-label" for="first-train-input">First Train (HH:mm)</label>
+      <input type="text" class="form-control" id="first-train-input">
+    </div>
+    <div class="form-group has-success">
+      <label class="control-label" for="frequency-input">Frequency</label>
+      <input type="number" class="form-control" id="frequency-input">
+    </div>
+    <div class="form-group">
+      
+        <button type="submit" class="btn btn-primary" for="inputSuccess" id="add-user">Submit</button>
+      
+    </div>
+  </div>
+</div>
+ 
+
+  <!-- jQuery -->
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+
+  <!-- LINK TO FIREBASE GOES HERE -->
+  <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+
+  <!-- Script -->
+  <script src="assets/javascript/logic2.js">
+    
+
+
+    
+  </script>
+
+</body>
+
+</html>
