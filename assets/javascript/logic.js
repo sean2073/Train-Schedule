@@ -19,12 +19,17 @@ var nextArrival = ""; //military time
 var minsAway = 0;
 var trainName = "";
 var firsttrain = "";
-var i = 7;
+var i =27;
 // Capture Button Click
+$("#reset-form").on("click", function() {
+    //$("#trainName-input").reset();
+    document.getElementById("#trainForm").reset();
+  });
 $("#add-user").on("click", function() {
  // Don't refresh the page!
   event.preventDefault();
-  i++
+  i++;
+  console.log("i = " +i);
   // Code in the logic for storing and retrieving the most recent train.
 
   //changed this to use the proper form values
@@ -130,7 +135,7 @@ function getTimes(freq, first_time) {
     console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
     
     //setting these global variable bc return isn't working liked I hoped
-    nextArrival = moment(nextTrain).format("hh:mm");
+    nextArrival = moment(nextTrain).format("hh:mm A");
     
     minsAway = tMinutesTillTrain;
     console.log(minsAway);
